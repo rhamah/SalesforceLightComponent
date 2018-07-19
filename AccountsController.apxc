@@ -1,0 +1,11 @@
+public class AccountsController {
+    
+    @auraEnabled
+    public List<SelectOption> picklist { get; set; }
+    @auraEnabled
+    public static List<Account> getAccounts(Integer max){
+        List<Account> listAccounts = [SELECT Id, Name FROM Account LIMIT: integer.valueof(max)];
+        return listAccounts; 
+    }
+    
+}

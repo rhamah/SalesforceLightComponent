@@ -1,0 +1,35 @@
+<aura:component implements="flexipage:availableForAllPageTypes" controller="AccountsController" access="global" >    
+<aura:handler name="init" action="{!c.init}" value="{!this}" />
+<aura:attribute name="accountList" type="List"/>
+<lightning:card title="Accounts">    
+	<div class="slds-form-element" >
+  		<label class="slds-form-element__label" for="select-01">Select Number of accounts to display</label>
+  		<div class="slds-form-element__control" style="width: 20%">
+      		<select class="slds-select" id="select-01" onchange="{!c.onPicklistChange}" >
+        		<option value="0">Select Number</option>
+        		<option value="1">1</option>
+        		<option value="2">2</option>
+       			<option value="3">3</option>
+       			<option value="4">4</option>
+       			<option value="5">5</option>
+       			<option value="6">6</option>
+       			<option value="7">7</option>
+       			<option value="8">8</option>
+       			<option value="9">9</option>
+       			<option value="10">10</option>  
+    		</select>       
+  		</div>
+	</div>
+	<br/>    
+	<p class="slds-p-horizontal_small">
+		<aura:iteration items="{!v.accountList}" var="account">
+    		<lightning:recordviewForm recordId="{!account.Id}" objectApiName="Account">
+        		<div class="slds-box slds-theme_default">
+            		<lightning:outputField fieldName="Name" />
+                </div>
+            </lightning:recordviewForm>
+            <br/>
+    	</aura:iteration>
+	</p>        
+</lightning:card>                   
+</aura:component>
